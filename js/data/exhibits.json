@@ -1,0 +1,23 @@
+[
+    {
+        "id": "exp_001",
+        "title": "Ancient Vase",
+        "description": "Ceramic vase, estimated age: 2nd century BC.",
+        "audio": "",
+        "position": [-4,1,-3]
+    },
+    {
+        "id": "exp_002",
+        "title": "Old Map",
+        "description": "A historical map showing early trade routes.",
+        "audio": "",
+        "position": [0,1,-3]
+    },   
+    {
+        "id": "exp_003",
+        "title": "Sculpture",
+        "description": "Stone sculpture with preserved texture details.",
+        "audio": "",
+        "position": [4,1,-3]
+    }
+]
