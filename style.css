@@ -1,0 +1,43 @@
+html, body{
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#ui{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+#infoPanel{
+    pointer-events: auto;
+    position: fixed;
+    right: 16px;
+    top: 16px;
+    width: 320px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+}
+#infoPanel h3{
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+#infoPanel p{
+    margin: 0 0 12px;
+    font-size: 14px;
+    line-height: 1.35;
+}
+#infoPanel button{
+    border: 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#infoPanel .row{
+    display: flex;
+    gap: 10px;
+}
