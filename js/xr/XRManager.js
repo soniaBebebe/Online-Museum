@@ -1,12 +1,12 @@
 import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.158/examples/jsm/webxr/VRButton.js";
 
 export class XRManager{
-    constructor(sceneManager){
-        this.sceneManager=sceneManager;
+    constructor(renderer){
+        this.renderer=renderer;
     }
     init(){
         document.body.appendChild(
-            VRButton.createButton(this.sceneManager.renderer)
+            VRButton.createButton(this.renderer)
         );
     }
 }

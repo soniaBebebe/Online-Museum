@@ -1,21 +1,22 @@
-import {SceneManager} from "./scene/SceneManager.js";
+import {SceneManager} from "./scenes/SceneManager.js";
 import {XRManager} from "./xr/XRManager.js";
-import {CameraManager} from "./scene/CameraManager.js";
+import {CameraManager} from "./scenes/CameraManager.js";
 import { RendererManager } from "./scenes/RendererManager.js";
-import {RoomBuilder} from "./scene/rendererManager.js";
+import {RoomBuilder} from "./scenes/RendererManager.js";
 import {ExhibitLoader} from "./data/ExhibitLoader.js";
 import {InteractionManager} from "./interaction/InteractionManager.js";
-import { infoPanel, infoPanel } from "./ui/infoPanel.js";
+import { infoPanel } from "./ui/infoPanel.js";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
 
 const sceneManager=new SceneManager();
 sceneManager.init();
 
-const xrManager=new XRManager(sceneManager);
+const xrManager=new XRManager(rendererManager.renderer);
 xrManager.init();
 
 const cameraManager=new CameraManager();
 const rendererManager=new RendererManager();
-const infoPanel=new infoPanel();
+const infoPanelUi=new infoPanel();
 
 const loader=new ExhibitLoader();
 const exhibits=await loader.load("./data/exhibits.json");
@@ -24,9 +25,9 @@ const interaction=new InteractionManager(
     cameraManager.camera,
     sceneManager.scene,
     rendererManager.renderer,
-    (exhibit)=>infoPanel.show(exhibit)
+    (exhibit)=>infoPanelUi.show(exhibit)
 );
-interaction.initDesctopPointer();
+interaction.initDesktopPointer();
 
 for (const ex of exhibits){
     const obj=loader.createExhibitObject(ex);
