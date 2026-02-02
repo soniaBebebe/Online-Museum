@@ -20,7 +20,7 @@ export class InteractionManager{
         });
     }
 
-    initDesctopPointer(){
+    initDesktopPointer(){
         this.renderer.domElement.addEventListener("pointerdown", (e)=>{
             const rect = this.renderer.domElement.getBoundingClientRect();
             this.pointer.x=((e.clientX-rect.left)/rect.width)*2 -1;

@@ -6,7 +6,7 @@ export class infoPanel{
 
         this.playBtn=document.getElementById("playAudioBtn");
         this.stopBtn=document.getElementById("stopAudioBtn");
-        this.closeBtn=document.getElementById("closeInfoBtn");
+        this.closeBtn=document.getElementById("closeAudioBtn");
 
         this.audio=new Audio();
         this.currentExhibit=null;

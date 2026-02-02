@@ -2,24 +2,30 @@ import {SceneManager} from "./scenes/SceneManager.js";
 import {XRManager} from "./xr/XRManager.js";
 import {CameraManager} from "./scenes/CameraManager.js";
 import { RendererManager } from "./scenes/RendererManager.js";
-import {RoomBuilder} from "./scenes/RendererManager.js";
+import {RoomBuilder} from "./scenes/RoomBuilder.js";
 import {ExhibitLoader} from "./data/ExhibitLoader.js";
 import {InteractionManager} from "./interaction/InteractionManager.js";
 import { infoPanel } from "./ui/infoPanel.js";
+import {FPSControls} from "./navigation/FPSControls.js"
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
 
 const sceneManager=new SceneManager();
 sceneManager.init();
 
-const xrManager=new XRManager(rendererManager.renderer);
+const xrManager=new XRManager(RendererManager.renderer);
 xrManager.init();
 
 const cameraManager=new CameraManager();
 const rendererManager=new RendererManager();
 const infoPanelUi=new infoPanel();
 
+const controls=new FPSControls(
+    cameraManager.camera,
+    rendererManager.renderer.domElement
+);
+
 const loader=new ExhibitLoader();
-const exhibits=await loader.load("./data/exhibits.json");
+const exhibits=await loader.load("./js/data/exhibits.json");
 
 const interaction=new InteractionManager(
     cameraManager.camera,
@@ -37,8 +43,11 @@ for (const ex of exhibits){
 
 const axes=new THREE.AxesHelper(2);
 sceneManager.scene.add(axes);
+const clock=new THREE.Clock();
 
 function animate(){
+    const delta=clock.getDelta();
+    controls.update(delta);
     rendererManager.renderer.render(
         sceneManager.scene,
         cameraManager.camera
