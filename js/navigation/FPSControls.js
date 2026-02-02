@@ -19,6 +19,13 @@ export class FPSControls{
         this.pitch=0;
         this.yaw=0;
 
+        this.bounds={
+            minX:-9,
+            maxX:9,
+            minZ:-9,
+            maxZ:9
+        };
+
         this._initEvents();
     }
     _initEvents(){
@@ -75,7 +82,19 @@ export class FPSControls{
             .applyEuler(this.camera.rotation)
             .multiplyScalar(this.speed*delta);
 
-            this.camera.position.add(this.velocity);
+            // this.camera.position.add(this.velocity);
+            const nextPos=this.camera.position.clone().add(this.velocity);
+            nextPos.x=THREE.MathUtils.clamp(
+                nextPos.x,
+                this.bounds.minX,
+                this.bounds.maxX
+            );
+            nextPos.z=THREE.MathUtils.clamp(
+                nextPos.z,
+                this.bounds.minZ,
+                this.bounds.maxZ
+            );
+            this.camera.position.copy(nextPos);
         }
     }
 }
