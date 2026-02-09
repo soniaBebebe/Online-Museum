@@ -6,6 +6,10 @@ export class MiniMap{
         this.mapEl=document.getElementById("minimap");
         this.playerEl=document.getElementById("player");
 
+        this.exhibits=[];
+        this.markers= new Map();
+        this.activeExhibit=null;
+
         this.size=this.mapEl.clientWidth;
     }
 
@@ -21,5 +25,30 @@ export class MiniMap{
 
         const yaw=this.camera.rotation.y;
         this.playerEl.style.transform=`rotate(${yaw}rad)`;
+    }
+
+    registerExhibit(object3D, exhibitData){
+        const marker = document.createElement("div");
+        marker.className="exhibit-marker";
+
+        this.mapEl.appendChild(marker);
+
+        this.exhibits.push(object3D);
+        this.markers.set(object3D, marker);
+    }
+
+    setActive(object3D){
+        if(this.activeExhibit){
+            const old=this.markers.get(this.activeExhibit);
+            old?.classList.remove("active");
+        }
+
+        this.activeExhibit=object3D;
+
+        if (object3D){
+            const m=this.markers.get(object3D);
+            m?.classList.add("active");
+            //nachat otsuda update coordinati objectov
+        }
     }
 }
