@@ -51,4 +51,25 @@ export class MiniMap{
             //nachat otsuda update coordinati objectov
         }
     }
+    update(){
+        const x=(this.camera.position.x - this.bounds.minX) / (this.bounds.maxX - this.bounds.minX);
+        const z=(this.camera.position.z - this.bounds.minZ) / (this.bounds.maxZ -  this.bounds.minZ);
+
+        this.playerEl.style.left = `${x * this.size}px`;
+        this.playerEl.style.top = `${z * this.size}px`;
+
+        this.playerEl.style.transform=`translate(-50%, -50%) rotate(${this.camera.rotation.y}rad)`;
+
+        for (const onj of this.exhibits){
+            const marker = this.markers.get(obj);
+            if (!marker) continue;
+
+            const ex=(obj.position.x - this.bounds.minX) / (this.bounds.maxX - this.bounds.minX);
+            const ez=(obj.position.z - this.bounds.minZ) / (this.bounds.maxZ - this.boundsminZ);
+
+            marker.style.left =`${ex * this.size}px`;
+            marker.style.top = `${ez * this.size}px`;
+        }
+
+    }
 }

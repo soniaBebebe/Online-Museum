@@ -37,7 +37,10 @@ const interaction=new InteractionManager(
     cameraManager.camera,
     sceneManager.scene,
     rendererManager.renderer,
-    (exhibit)=>infoPanelUi.show(exhibit)
+    (exhibit, object3D)=>{
+        infoPanelUi.show(exhibit);
+        miniMap.setActive(object3D);
+    }
 );
 interaction.initDesktopPointer();
 
@@ -45,6 +48,8 @@ for (const ex of exhibits){
     const obj=loader.createExhibitObject(ex);
     sceneManager.scene.add(obj);
     interaction.registerExhibitGroup(obj);
+
+    miniMap.registerExhibit(obj, ex);
 }
 
 const axes=new THREE.AxesHelper(2);

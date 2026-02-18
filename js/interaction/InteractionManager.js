@@ -27,8 +27,15 @@ export class InteractionManager{
             this.pointer.y=-(((e.clientY-rect.top)/rect.height)*2 -1);
             this.raycaster.setFromCamera(this.pointer, this.camera);
             const hits=this.raycaster.intersectObjects(this.pickables, true);
-            if (hits.length>0){ const exhibit=hits[0].object.userData.exhibit;
-                if (exhibit) this.onExhibitSelected(exhibit);
+            // if (hits.length>0){ const exhibit=hits[0].object.userData.exhibit;
+            //     if (exhibit) this.onExhibitSelected(exhibit);
+            if (hits.length > 0){
+                const obj = hits[0].object;
+                const exhibit = obj.userData.exhibit;
+
+                if (exhibit){
+                    this.onExhibitSelected(exhibit, obj.parent);
+                }
             }
         })
     }
