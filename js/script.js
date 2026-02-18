@@ -13,11 +13,11 @@ import {MiniMap} from "./ui/minimap.js";
 const sceneManager=new SceneManager();
 sceneManager.init();
 
-const xrManager=new XRManager(RendererManager.renderer);
+const rendererManager=new RendererManager();
+const xrManager=new XRManager(rendererManager.renderer);
 xrManager.init();
 
 const cameraManager=new CameraManager();
-const rendererManager=new RendererManager();
 const infoPanelUi=new infoPanel();
 
 const controls=new FPSControls(

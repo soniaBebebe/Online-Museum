@@ -11,25 +11,37 @@ export class MiniMap{
         this.activeExhibit=null;
 
         this.size=this.mapEl.clientWidth;
+
+        this.tooltip = document.createElement("div");
+        this.tooltip.className="minimap-tooltip";
+        this.mapEl.appendChild(this.tooltip);
     }
 
-    update(){
-        const x=(this.camera.position.x - this.bounds.minX) / (this.bounds.maxX - this.bounds.minX);
-        const z=(this.camera.position.z - this.bounds.minZ) / (this.bounds.maxZ - this.bounds.minZ);
+    // update(){
+    //     const x=(this.camera.position.x - this.bounds.minX) / (this.bounds.maxX - this.bounds.minX);
+    //     const z=(this.camera.position.z - this.bounds.minZ) / (this.bounds.maxZ - this.bounds.minZ);
 
-        const mapX=x*this.size;
-        const mapY=z*this.size;
+    //     const mapX=x*this.size;
+    //     const mapY=z*this.size;
 
-        this.playerEl.style.left=`${mapX-5}px`;
-        this.playerEl.style.top=`${mapY-5}px`;
+    //     this.playerEl.style.left=`${mapX-5}px`;
+    //     this.playerEl.style.top=`${mapY-5}px`;
 
-        const yaw=this.camera.rotation.y;
-        this.playerEl.style.transform=`rotate(${yaw}rad)`;
-    }
+    //     const yaw=this.camera.rotation.y;
+    //     this.playerEl.style.transform=`rotate(${yaw}rad)`;
+    // }
 
     registerExhibit(object3D, exhibitData){
         const marker = document.createElement("div");
         marker.className="exhibit-marker";
+        marker.addEventListener("mouseenter", ()=>{
+            this.tooltip.textContent=exhibitData.title;
+            this.tooltip.style.opacity="1";
+        });
+
+        marker.addEventListener("mouseleave", ()=>{
+            this.tooltip.style.opacity="0";
+        });
 
         this.mapEl.appendChild(marker);
 
@@ -60,7 +72,7 @@ export class MiniMap{
 
         this.playerEl.style.transform=`translate(-50%, -50%) rotate(${this.camera.rotation.y}rad)`;
 
-        for (const onj of this.exhibits){
+        for (const obj of this.exhibits){
             const marker = this.markers.get(obj);
             if (!marker) continue;
 
@@ -69,6 +81,14 @@ export class MiniMap{
 
             marker.style.left =`${ex * this.size}px`;
             marker.style.top = `${ez * this.size}px`;
+        }
+
+        if (this.tooltip.style.opacity==="1"){
+            const activeMarker = this.mapEl.querySelector(".exhibit-marker:hover");
+            if (activeMarker){
+                this.tooltip.style.left=activeMarker.style.left;
+                this.tooltip.style.top = activeMarker.style.top;
+            }
         }
 
     }
