@@ -53,5 +53,12 @@ export class ExhibitLoader{
             group.add(sphere);
             //nachat otsuda!!!
         }
+        group.position.set(
+            exhibit.position[0],
+            0,
+            exhibit.position[2]
+        );
+
+        return group;
     }
 }
