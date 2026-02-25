@@ -1,5 +1,6 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.158/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
+
+import { GLTFLoader } from "https://unpkg.com/three@0.158.0/examples/jsm/loaders/GLTFLoader.js?module";
 
 export class ExhibitLoader{
     async load(url){
@@ -35,7 +36,7 @@ export class ExhibitLoader{
                 const model = gltf.scene;
                 model.scale.set(1.2, 1.2, 1.2);
                 model.position.y=1.1;
-                model.tracerse((child)=>{
+                model.traverse((child)=>{
                     if (child.isMesh){
                         child.userData.exhibit=exhibit;
                     }

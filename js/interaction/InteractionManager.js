@@ -1,4 +1,4 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
+import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
 
 export class InteractionManager{
     constructor(camera,scene,renderer,onExhibitSelected){
@@ -13,7 +13,7 @@ export class InteractionManager{
         this.pickables=[];
     }
     registerExhibitGroup(group){
-        const meshes = group.userData.pickables || {};
+        const meshes = group.userData.pickables || [];
         meshes.forEach(m=>{
             m.userData.exhibit=group.userData.exhibit;
             this.pickables.push(m);

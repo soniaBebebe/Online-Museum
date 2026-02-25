@@ -7,7 +7,7 @@ import {ExhibitLoader} from "./data/ExhibitLoader.js";
 import {InteractionManager} from "./interaction/InteractionManager.js";
 import { infoPanel } from "./ui/infoPanel.js";
 import {FPSControls} from "./navigation/FPSControls.js"
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
+import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
 import {MiniMap} from "./ui/minimap.js";
 
 const sceneManager=new SceneManager();

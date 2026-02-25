@@ -23,8 +23,21 @@
     {
         "title": "Sculpture",
         "description": "Ancient Japanese paper sculpture",
-        "model": "./models/japanese_origami_crane.glb",
+        "model": "/models/japanese_origami_crane.glb",
         "position": [0, 0, 2]
+
+    },
+    {
+        "title": "Old Map",
+        "description": "Ancient Mediterranian map",
+        "model": "/models/old_map.glb",
+        "position": [0, 0, 6]
+    },
+    {
+        "title": "Marble Vase",
+        "description": "Ancient Greek vase",
+        "model": "/models/marble_vase.glb",
+        "position": [0, 0, 10]
 
     }
 ]
