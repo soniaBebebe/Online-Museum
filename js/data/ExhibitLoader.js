@@ -1,6 +1,6 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
 
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.158/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "https://esm.sh/three@0.158/examples/jsm/loaders/GLTFLoader.js";
 
 export class ExhibitLoader{
     async load(url){
@@ -34,8 +34,19 @@ export class ExhibitLoader{
 
             loader.load(exhibit.model, (gltf)=>{
                 const model = gltf.scene;
-                model.scale.set(1.2, 1.2, 1.2);
-                model.position.y=1.1;
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+
+                model.position.sub(center);
+
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim=Math.max(size.x, size.y, size.z);
+
+                const targetSize=0.7;
+                const scale=targetSize/maxDim;
+
+                model.scale.setScalar(scale);
+                model.position.y+=1.2;
                 model.traverse((child)=>{
                     if (child.isMesh){
                         child.userData.exhibit=exhibit;
