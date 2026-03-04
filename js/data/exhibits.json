@@ -4,40 +4,58 @@
         "title": "Ancient Vase",
         "description": "Ceramic vase, estimated age: 2nd century BC.",
         "audio": "",
-        "position": [-4,1,-3]
+        "position": [-4,1,-1]
     },
     {
         "id": "exp_002",
         "title": "Old Map",
         "description": "A historical map showing early trade routes.",
         "audio": "",
-        "position": [0,1,-3]
+        "position": [-2,1,-6]
     },   
     {
         "id": "exp_003",
         "title": "Sculpture",
         "description": "Stone sculpture with preserved texture details.",
         "audio": "",
-        "position": [4,1,-3]
+        "position": [4,1,-1]
     },
     {
         "title": "Sculpture",
         "description": "Ancient Japanese paper sculpture",
         "model": "js/models/japaneseOrigamiCrane.glb",
-        "position": [0, 0, 2]
+        "position": [-4, 1, 1]
 
     },
     {
         "title": "Old Map",
         "description": "Ancient Mediterranian map",
         "model": "js/models/oldMap.glb",
-        "position": [0, 0, 6]
+        "position": [0, 1, 6]
     },
     {
         "title": "Marble Vase",
         "description": "Ancient Greek vase",
         "model": "js/models/marbleVase.glb",
-        "position": [0, 0, 10]
+        "position": [4, 1, 1]
 
+    },
+    {
+        "title": "Ship in a Bottle",
+        "description": "Small ship in the glass bottle",
+        "model": "js/models/shipInABottle.glb",
+        "position": [4, 1, 3]
+    },
+    {
+        "title": "Crown",
+        "description": "Royal Crown from Tudor Dynasty",
+        "model": "js/models/kingsCrown.glb",
+        "position": [-4, 1, 3]
+    },
+     {
+        "title": "Dinosaur Skull",
+        "description": "Triceratops skull from archeologic site in Egypt",
+        "model": "js/models/dinoSkull.glb",
+        "position": [2,1,-6]
     }
 ]
