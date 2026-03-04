@@ -1,6 +1,6 @@
-import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158/build/three.module.js";
 
-import { GLTFLoader } from "https://unpkg.com/three@0.158.0/examples/jsm/loaders/GLTFLoader.js?module";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.158/examples/jsm/loaders/GLTFLoader.js";
 
 export class ExhibitLoader{
     async load(url){
@@ -52,7 +52,6 @@ export class ExhibitLoader{
             sphere.position.y = 1.1;
             sphere.userData.exhibit=exhibit;
             group.add(sphere);
-            //nachat otsuda!!!
         }
         group.position.set(
             exhibit.position[0],
