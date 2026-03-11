@@ -62,6 +62,7 @@ export class ExhibitLoader{
                     }
                 });
                 group.add(model);
+                group.userData.rotate=exhibit.rotate;
                 console.log("Loaded:", exhibit.model);
                 model.traverse(child=>{
                     console.log(child.type);

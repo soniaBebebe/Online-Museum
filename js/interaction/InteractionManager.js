@@ -11,7 +11,9 @@ export class InteractionManager{
         this.pointer = new THREE.Vector2();
 
         this.pickables=[];
+        this.hovered = null;
     }
+
     registerExhibitGroup(group){
         const meshes = group.userData.pickables || [];
         meshes.forEach(m=>{
@@ -37,6 +39,17 @@ export class InteractionManager{
                     this.onExhibitSelected(exhibit, obj.parent);
                 }
             }
+        })
+    }
+
+    initHoverHighlight(){
+        this.renderer.domElement.addEventListener("pointermove", (e)=>{
+            const rect = this.renderer.domElement.getBoundingClientRect();
+            this.pointer.x=((e.clientX-rect.left)/rect.width)*2-1;
+            this.pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;
+
+            this.raycaster.setFromCamera(this.pointer,this.camera);
+            //nachat otsuda!
         })
     }
 }

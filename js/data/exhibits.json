@@ -24,40 +24,45 @@
         "title": "Sculpture",
         "description": "Ancient Japanese paper sculpture",
         "model": "js/models/japaneseOrigamiCrane.glb",
-        "position": [-4, 1, 1]
+        "position": [-4, 1, 1],
+        "rotate": true
 
     },
     {
         "title": "Old Map",
         "description": "Ancient Mediterranian map",
         "model": "js/models/oldMap.glb",
-        "position": [0, 1, 6]
+        "position": [0, 1, 6],
+        "rotate": true
     },
     {
         "title": "Marble Vase",
         "description": "Ancient Greek vase",
         "model": "js/models/marbleVase.glb",
-        "position": [4, 1, 1]
-
+        "position": [4, 1, 1],
+        "rotate": true
     },
     {
         "title": "Ship in a Bottle",
         "description": "Small ship in the glass bottle",
         "model": "js/models/shipInABottle.glb",
-        "position": [4, 1, 3]
+        "position": [4, 1, 3],
+        "rotate": true
     },
     {
         "title": "Crown",
         "description": "Royal Crown from Tudor Dynasty",
         "model": "js/models/kingsCrown.glb",
         "position": [-4, 0, 3],
-        "offset": [-4.9,9.9,-7.6]
+        "offset": [0.3,0.5,1.3],
+        "rotate": true
     },
      {
         "title": "Dinosaur Skull",
         "description": "Triceratops skull from archeologic site in Egypt",
         "model": "js/models/dinoSkull.glb",
         "position": [2,10,-6],
-        "offset": [-4.9,9.9,-7.6]
+        "offset": [-4.9,9.9,-7.6],
+        "rotate": true
     }
 ]

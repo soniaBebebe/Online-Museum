@@ -64,6 +64,11 @@ function animate(){
         sceneManager.scene,
         cameraManager.camera
     )
+    sceneManager.scene.traverse(obj=>{
+        if(obj.userData.rotate){
+            obj.rotation.y += delta*0.5;
+        }
+    });
 }
 
 window.addEventListener("resize", ()=>{
