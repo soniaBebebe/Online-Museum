@@ -4,21 +4,30 @@
         "title": "Ancient Vase",
         "description": "Ceramic vase, estimated age: 2nd century BC.",
         "audio": "",
-        "position": [-4,1,-1]
+        "model": "js/models/kitten.glb",
+        "position": [-4,1,-1],
+        "rotate": true,
+        "offset": [0,-0.2,0]
     },
     {
         "id": "exp_002",
         "title": "Old Map",
         "description": "A historical map showing early trade routes.",
         "audio": "",
-        "position": [-2,1,-6]
+        "model": "js/models/book.glb",
+        "position": [-2,1,-6],
+        "offset": [0,2.4,0],
+        "rotate": true
     },   
     {
         "id": "exp_003",
         "title": "Sculpture",
         "description": "Stone sculpture with preserved texture details.",
         "audio": "",
-        "position": [4,1,-1]
+        "model": "js/models/dragonSculpture.glb",
+        "position": [4,1,-1],
+        "offset": [0,7.1,0],
+        "rotate": true
     },
     {
         "title": "Sculpture",

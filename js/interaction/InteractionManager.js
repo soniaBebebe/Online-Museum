@@ -72,13 +72,33 @@ export class InteractionManager{
             
         })
     }
+    // highlightGroup(group,color){
+    //     group.traverse(child=>{
+    //         if(child.isMesh && child.material){
+    //             if(child.material.emissive){
+    //                 child.material.emissive.set(color);
+    //             }
+    //         }
+    //     });
+    // }
     highlightGroup(group,color){
-        group.traverse(child=>{
-            if(child.isMesh && child.material){
-                if(child.material.emissive){
-                    child.material.emissive.set(color);
-                }
-            }
-        });
+
+    group.traverse(child=>{
+
+    if(child.isMesh && child.material){
+
+        if(child.material.emissive){
+            child.material.emissive.set(color);
+        } 
+        else if(child.material.color){
+
+            child.material.color.offsetHSL(0, 0, color === 0x000000 ? -0.2 : 0.2);
+        }
+
     }
+    //nachat otsuda!!!
+
+        });
+
+    }   
 }
