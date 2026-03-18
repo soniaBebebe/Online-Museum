@@ -49,7 +49,36 @@ export class InteractionManager{
             this.pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;
 
             this.raycaster.setFromCamera(this.pointer,this.camera);
-            //nachat otsuda!
+            const hits = this.raycaster.intersectObjects(this.pickables, true);
+
+            if(this.hovered){
+                this.hovered.material.emissive?.set(0x000000);
+                this.hovered=null;
+            }
+            if(hits.length>0){
+                const obj=hits[0].object;
+                while (obj.parent && !obj.userData.exhibit){
+                    obj=obj.parent;
+                }
+                if(obj){
+                    obj.highlightGroup(obj, 0x333333);
+                    this.hovered=obj;
+                }
+                if (obj.material){
+                console.log("Material:", obj.material);
+                console.log("Has emissive:", obj.material.emissive);
+                }
+            }
+            
         })
+    }
+    highlightGroup(group,color){
+        group.traverse(child=>{
+            if(child.isMesh && child.material){
+                if(child.material.emissive){
+                    child.material.emissive.set(color);
+                }
+            }
+        });
     }
 }

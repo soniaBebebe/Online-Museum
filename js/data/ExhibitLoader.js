@@ -25,9 +25,9 @@ export class ExhibitLoader{
         // group.add(item);
 
         // group.position.set(exhibit.position[0], exhibit.position[1]-1, exhibit.position[2]);
-        // group.userData.exhibit=exhibit;
+        group.userData.exhibit=exhibit;
         // group.userData.isExhbit=true;
-        // group.userData.pickables=[stand,item];
+        group.userData.pickables=[];
 
         // return group;
 
@@ -55,10 +55,10 @@ export class ExhibitLoader{
                     model.position.z+=exhibit.offset[2];
                 }
                 model.traverse((child)=>{
+
                     if (child.isMesh){
                         child.userData.exhibit=exhibit;
-                        if (group.userData.pickables)
-                            group.user.Data.pickables.push(child);
+                        group.user.Data.pickables.push(child);
                     }
                 });
                 group.add(model);

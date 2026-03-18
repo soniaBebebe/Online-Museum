@@ -44,6 +44,8 @@ const interaction=new InteractionManager(
 );
 interaction.initDesktopPointer();
 
+interaction.initHoverHighlight();
+
 for (const ex of exhibits){
     const obj=loader.createExhibitObject(ex);
     sceneManager.scene.add(obj);
