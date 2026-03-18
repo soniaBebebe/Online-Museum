@@ -52,16 +52,16 @@ export class InteractionManager{
             const hits = this.raycaster.intersectObjects(this.pickables, true);
 
             if(this.hovered){
-                this.hovered.material.emissive?.set(0x000000);
+                this.highlightGroup(this.hovered, 0x000000);
                 this.hovered=null;
             }
             if(hits.length>0){
-                const obj=hits[0].object;
+                let obj=hits[0].object;
                 while (obj.parent && !obj.userData.exhibit){
                     obj=obj.parent;
                 }
                 if(obj){
-                    obj.highlightGroup(obj, 0x333333);
+                    this.highlightGroup(obj, 0x333333);
                     this.hovered=obj;
                 }
                 if (obj.material){

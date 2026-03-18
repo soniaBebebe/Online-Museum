@@ -58,7 +58,7 @@ export class ExhibitLoader{
 
                     if (child.isMesh){
                         child.userData.exhibit=exhibit;
-                        group.user.Data.pickables.push(child);
+                        group.userData.pickables.push(child);
                     }
                 });
                 group.add(model);
