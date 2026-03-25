@@ -5,7 +5,30 @@ export class SceneManager{
         this.clock=new THREE.Clock();
     }
     init(){
-        this.scene.background=new THREE.Color(0x202020);
+        //      EXAMPLE 1!!
+        // const canvas = document.createElement('canvas');
+        // canvas.width=512;
+        // canvas.height=512;
+
+        // const ctx=canvas.getContext('2d');
+
+        // const gradient=ctx.createLinearGradient(0,0,0,512);
+        // gradient.addColorStop(0, '#4584fa');
+        // gradient.addColorStop(1, '#09347d');
+
+        // ctx.fillStyle=gradient;
+        // ctx.fillRect(0,0,512,512);
+
+        // const texture=new THREE.CanvasTexture(canvas);
+        // this.scene.background=texture;
+
+        const loader=new THREE.TextureLoader();
+
+        loader.load('textures/skyPic.jpg', (texture)=>{
+            texture.mapping=THREE.EquirectangularReflectionMapping;
+            this.scene.background=texture;
+        });
+        
         this.addLights();
     }
     addLights(){
